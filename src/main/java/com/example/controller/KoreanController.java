@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.domain.Diary;
 import com.example.domain.Korean;
@@ -18,11 +17,9 @@ import com.example.service.DiaryService;
 import com.example.service.KoreanService;
 
 @Controller
-@RequestMapping("/wordlist")
-public class WordListController {
+@RequestMapping("/korean")
+public class KoreanController {
 
-	//1ページ当たりの表示件数
-	private static final int NUM_PER_PAGE = 6;
 
 	@Autowired
 	KoreanService service;
@@ -35,12 +32,8 @@ public class WordListController {
  */
 
 	@GetMapping
-	public String show(
-			@RequestParam(name = "page", defaultValue = "1") Integer page,
-			Model model) throws Exception {
-	model.addAttribute("koreans", service.getKoreanListByPage(page, NUM_PER_PAGE));
-	model.addAttribute("page", page);
-	model.addAttribute("totalPages", service.getTotalPages(NUM_PER_PAGE));
+	public String show(Model model) throws Exception {
+	model.addAttribute("koreans", service.getKoreanList());
 		return "korean";
 	}
 
@@ -67,7 +60,7 @@ public class WordListController {
 		// DBにデータ追加
 		service.addKorean(korean);
 
-		return "redirect:/wordlist";
+		return "redirect:/korean";
 	}
 
 /**
@@ -95,7 +88,7 @@ public class WordListController {
 
 		service.updateKorean(korean);
 
-		return "redirect:/wordlist";
+		return "redirect:/korean";
 	}
 
 /**
@@ -109,7 +102,7 @@ public class WordListController {
 
 		service.deleteKorean(id);
 
-		return "redirect:/wordlist";
+		return "redirect:/korean";
 	}
 
 /**
@@ -141,7 +134,7 @@ public class WordListController {
 			// DBにデータ追加
 			service1.addDiary(diary);
 
-			return "redirect:/wordlist";
+			return "redirect:/korean";
 		}
 
 

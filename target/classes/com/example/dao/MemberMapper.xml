@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.dao.MemberDao">
+	<select id="selectByLoginId"
+		resultType="com.example.domain.Member">
+		SELECT
+		login_id AS loginId, login_pass AS loginPass
+		FROM member WHERE login_id = #{loginId}
+	</select>
+
+
+	<insert id="insert" parameterType="com.example.domain.Member"
+	                       useGeneratedKeys="true">
+	    INSERT INTO member
+	    (login_id, login_pass)
+	    VALUES
+	    (#{loginId}, #{loginPass})
+    </insert>
+</mapper>

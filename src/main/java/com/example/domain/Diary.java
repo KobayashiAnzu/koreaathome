@@ -10,6 +10,8 @@ public class Diary {
 	private Integer id;
 	private String contents;
 	private Date created;
+	private String posted;
+	private String feeling;
 	private String title;
 
 }

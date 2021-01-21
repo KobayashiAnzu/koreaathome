@@ -1,16 +1,27 @@
 <%@ page pageEncoding="UTF-8"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<spring:url value="/logout" var="logout" />
 <!DOCTYPE html>
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
 <title>TopPage</title>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/home.css">
 </head>
 <body>
 
-<p><a href="wordlist">日記を書く</a></p>
+<a href="${logout}">ログアウト</a>
 
-<p><a href="quiz">単語クイズ</a></p>
+<main class="main">
+<div class="btn-group-vertical w-auto">
 
-<p><a href="diary">日記一覧</a></p>
+<a class="btn btn-info" href="korean">日記を書く</a><br>
+<a class="btn btn-info" href="quiz">単語クイズ</a><br>
+<a class="btn btn-info" href="diary">日記一覧</a>
+
+</div>
+</main>
+
 </body>
 </html>
